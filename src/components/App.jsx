@@ -1,14 +1,14 @@
 import React, { Component, Fragment } from 'react';
-import ChirpInput from './components/ChirpInput';
-import Chirp from './components/Chirp';
+import ChirpInput from './ChirpInput';
+import Chirp from './Chirp';
 
 class App extends Component {
     constructor(props) {
         super(props);
+        this.state= {}
     }
 
     render() {
-
         return (
             <Fragment>
                 <div className="jumbotron jumbotron-fluid text-primary m-0">
@@ -23,7 +23,7 @@ class App extends Component {
                 </div>
 
                 <div id="timeline">
-                    <Chirp />
+                    <Chirp userName= 'Phillip' chirpMsg= 'Msg' />
                 </div>
 
             </Fragment>

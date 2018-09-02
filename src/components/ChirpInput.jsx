@@ -13,14 +13,17 @@ class ChirpInput extends Component {
     //method to handle the text input and change state
     handleChange(e) {
         this.setState({ msg: e.target.value })
-        console.log(this.state.msg)
     };
 
     //method to handle the submission of the text input
     handleSubmit(e) {
         e.preventDefault();
-        this.props.getMsg(this.state.msg);
+        let chirp = this.state.msg;
+        console.log(chirp);
         this.setState({ msg: '' });
+        return chirp;
+        
+        
     };
 
     render() {
