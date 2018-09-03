@@ -5,12 +5,27 @@ import Chirp from './Chirp';
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state= {}
+        
+        this.state = {
+            timeline: [
+                { name: "Katrina", chirp: "Hello World!" },
+                { name: "Norah", chirp: "Isn't it a nice day!?" },
+                { name: "Mowgli", chirp: "Meow." }
+            ]
+        }
+
+        let timeline = this.state.timeline;
+        //maps over the timeline array to produce a list of Chirp Components
+        this.updatedTimeline = timeline.map((val, index) => {
+            return <Chirp key={index} userName={val.name} chirpMsg={val.chirp} />
+        });
+        
     }
 
     render() {
         return (
             <Fragment>
+                
                 <div className="jumbotron jumbotron-fluid text-primary m-0">
                     <div className="container">
                         <h1 className="display-4">Chirper</h1>
@@ -22,8 +37,8 @@ class App extends Component {
                     <ChirpInput />
                 </div>
 
-                <div id="timeline">
-                    <Chirp userName= 'Phillip' chirpMsg= 'Msg' />
+                <div id="timeline" className="bg-light p-4" >
+                     {this.updatedTimeline}
                 </div>
 
             </Fragment>
