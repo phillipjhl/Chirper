@@ -4,7 +4,6 @@
 import React from 'react';
 
 function Chirp(props) {
-    // console.log(props)
     return (
         <div className="card" >
             <div className="card-body">
