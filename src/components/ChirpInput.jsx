@@ -1,4 +1,7 @@
-import React, {Component} from 'react';
+//Component for User Input
+//Posting adds new Chirp to timeline
+
+import React, { Component } from 'react';
 
 class ChirpInput extends Component {
     constructor(props) {
@@ -7,7 +10,7 @@ class ChirpInput extends Component {
             msg: ''
         }
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handlePost = this.handlePost.bind(this);
     }
 
     //method to handle the text input and change state
@@ -16,21 +19,22 @@ class ChirpInput extends Component {
     };
 
     //method to handle the submission of the text input
-    handleSubmit(e) {
-        e.preventDefault();
-        let chirp = this.state.msg;
-        console.log(chirp);
+    //uses property onPost to send userChirpInfo to App.handlePost() method
+    handlePost() {
+        let userChirpInfo = {
+            name: 'Phillip',
+            chirpMsg: this.state.msg
+        }
         this.setState({ msg: '' });
-        return chirp;
-        
-        
+        this.props.onPost(userChirpInfo);
     };
 
     render() {
-        return(
-                <form className="form-group" onSubmit={this.handleSubmit} >
-                    <label for="chirpinput" className="text-white" >Post Your Message Here</label>
-                    <input 
+        return (
+            <form className="form-group" onSubmit={this.handlePost} >
+                <label for="chirpinput" className="text-white" >Post Your Message Here</label>
+                <div className="input-group">
+                    <input
                         type="text"
                         className="form-control"
                         id="chirpinput"
@@ -38,8 +42,11 @@ class ChirpInput extends Component {
                         onChange={this.handleChange}
                         placeholder="How are you feeling today?"
                     />
-                    <button type="sumbit" className="btn btn-secondary" >Post</button>
-                </form>
+                    <div className="input-group-append">
+                        <button type="button" onClick={this.handlePost} className="btn btn-secondary" >Post</button>
+                    </div>
+                </div>
+            </form>
         );
     }
 }
