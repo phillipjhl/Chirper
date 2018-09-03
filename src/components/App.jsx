@@ -26,6 +26,8 @@ class App extends Component {
         this.handlePost = this.handlePost.bind(this);
     }
 
+    //method to handle timeline update that is called on render()
+    //maps over the new state.timeline to create a list of Chirps
     updateTimeline() {
         //maps over the state.timeline array to produce a list of Chirp Components
         let updatedTimeline = this.state.timeline.map(
@@ -35,6 +37,7 @@ class App extends Component {
         return updatedTimeline;
     } 
 
+    //method to handle the submitted user info and then add new object to the state.timeline
     handlePost(userChirpInfo) {
         let userTimeline = this.state.timeline;
         userTimeline.unshift(userChirpInfo);
